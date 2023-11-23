@@ -3,12 +3,10 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Home from "./components/pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Services from "./components/pages/Services";
-import Products from "./components/pages/Products";
-import SignUp from "./components/pages/SignUp";
-import Gladiator from "./components/pages/Gladiator";
+import Regular from "./components/pages/Regular";
 import MeetTeam from "./components/pages/MeetTeam";
-import Learn from "./components/pages/Learn";
+import Approach from "./components/pages/Approach";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,13 +15,11 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/services" component={Services} />
-          <Route path="/products" component={Products} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/gladiator" component={Gladiator} />
+          <Route path="/regular" component={Regular} />
           <Route path="/meet-team" component={MeetTeam} />
-          <Route path="/learn" component={Learn} />
+          <Route path="/approach" component={Approach} />
         </Switch>
+        <Footer />
       </Router>
     </>
   );

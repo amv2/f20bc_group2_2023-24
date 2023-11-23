@@ -57,16 +57,16 @@ h1 {
 }
 
 .cards__item__pic-wrap::after {
+  content: none; /* This will remove the content */
+}
+
+.cards__item__pic-wrap::after {
   content: attr(data-category);
   position: absolute;
   bottom: 0;
   margin-left: 10px;
   padding: 6px 8px;
   max-width: calc((100%) - 60px);
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  background-color: #1f98f4;
   box-sizing: border-box;
 }
 
@@ -115,4 +115,45 @@ h1 {
   .cards__item {
     margin-bottom: 2rem;
   }
+}
+
+.slider-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slider-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"] {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.multi-select {
+  display: none; /* Initially hide the options */
+  /* Add card-like styles for the multi-select */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.multi-select.show-options {
+  display: block; /* Show the options when the show-options class is present */
+}
+
+.multi-select-label {
+  cursor: pointer;
+  /* Add label styling for the multi-select */
+  color: #252e48;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 5px;
 }

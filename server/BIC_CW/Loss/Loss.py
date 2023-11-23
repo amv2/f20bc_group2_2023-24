@@ -1,5 +1,21 @@
 import numpy as np
 
+"""
+
+Sources used for loss functions theory and formulas
+
+https://www.datarobot.com/blog/introduction-to-loss-functions/#:~:text=Further%20reading-,What's%20a%20loss%20function%3F,ll%20output%20a%20lower%20number.
+
+https://towardsdatascience.com/what-is-loss-function-1e2605aeb904
+
+https://builtin.com/machine-learning/common-loss-functions
+
+https://www.analyticsvidhya.com/blog/2019/08/detailed-guide-7-loss-functions-machine-learning-python-code/
+
+https://www.geeksforgeeks.org/ml-common-loss-functions/
+
+"""
+
 
 class Loss:
     def evaluate(self, x):

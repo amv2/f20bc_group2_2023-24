@@ -1,5 +1,18 @@
 import numpy as np
 
+"""
+Sources and references used for activation function formulas:
+
+https://medium.com/analytics-vidhya/activation-functions-all-you-need-to-know-355a850d025e#:~:text=Formula%20%3A%20f(z)%20%3D,the%20probability%20as%20an%20output.
+
+https://www.mygreatlearning.com/blog/activation-functions/
+
+https://www.analyticsvidhya.com/blog/2021/04/activation-functions-and-their-derivatives-a-quick-complete-guide/
+
+https://www.v7labs.com/blog/neural-networks-activation-functions
+
+"""
+
 
 class Activation:
     def evaluate(self, x):
@@ -37,6 +50,17 @@ class Tanh(Activation):
 # Additional activation functions
 
 
+class LeakyReLU(Activation):
+    def __init__(self):
+        self.alpha = 0.01  # a value for alpha
+
+    def evaluate(self, x):
+        return np.where(x > 0, x, self.alpha * x)
+
+    def derivative(self, x):
+        return np.where(x > 0, 1, self.alpha)
+
+
 class Swish(Activation):
     def evaluate(self, x):
         return x * (1 / (1 + np.exp(-x)))
@@ -52,8 +76,7 @@ class Softmax(Activation):
         return exp_vals / np.sum(exp_vals, axis=-1, keepdims=True)
 
     def derivative(self, x):
-        # The derivative of Softmax is a bit complex and involves the Jacobian matrix
-        # Generally, in neural networks, derivative of Softmax is computed implicitly
+        # the derivative of Softmax is a bit complex and involves the Jacobian matrix
         pass
 
 
@@ -62,6 +85,4 @@ class GELU(Activation):
         return x * 0.5 * (1 + np.tanh(np.sqrt(2 / np.pi) * (x + 0.044715 * np.power(x, 3))))
 
     def derivative(self, x):
-        cdf = 0.5 * (1 + np.tanh(np.sqrt(2 / np.pi) *
-                     (x + 0.044715 * np.power(x, 3))))
         return 0.5 * (1 + np.tanh((np.sqrt(2 / np.pi) * (x + 0.044715 * np.power(x, 3))) + (0.107032 * np.power(x, 3))))
