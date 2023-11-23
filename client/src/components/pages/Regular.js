@@ -1,54 +1,27 @@
 // SEPARATOR: adjusting all the values, limits, and positions
 
-import React, { useState } from "react";
-import "./SignUp.css";
+import React, { useState, useEffect } from "react";
 import Slider from "../Slider";
 import MultiSelect from "../MultiSelect";
-import "../Cards.css";
+import Results from "../Results";
 
-const DataComponent = ({ data }) => {
-  return (
-    <div>
-      <h2>Data from Server:</h2>
-      <p>{data}</p>
-    </div>
-  );
-};
-
-const DisplayValue = ({ value }) => {
-  return <div>{value ? value : "0.0"}</div>;
-};
-
-const ResultsDisplay = ({ accuracy, fitness, loss, time }) => {
-  return (
-    <div>
-      <h2>Results</h2>
-      <div>
-        <p>Accuracy: </p>
-        <DisplayValue value={accuracy} />
-      </div>
-      <div>
-        <p>Fitness: </p>
-        <DisplayValue value={fitness} />
-      </div>
-      <div>
-        <p>Loss: </p>
-        <DisplayValue value={loss} />
-      </div>
-      <div>
-        <p>Elapsed Time (seconds): </p>
-        <DisplayValue value={time} />
-      </div>
-    </div>
-  );
-};
+import "../../App.css";
+import "../HeroSection.css";
+import { Button } from "../Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlay,
+  faEye,
+  faEyeSlash,
+  faCircleNotch,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Regular() {
-  const [intValue1, setIntValue1] = useState(5); // number of layers
-  const [intValue2, setIntValue2] = useState(6); // number of nodes per layer
-  const [intValue3, setIntValue3] = useState(25); // swarm size
+  const [intValue1, setIntValue1] = useState(4); // number of layers
+  const [intValue2, setIntValue2] = useState(8); // number of nodes per layer
+  const [intValue3, setIntValue3] = useState(50); // swarm size
   const [intValue4, setIntValue4] = useState(25); // max iterations
-  const [intValue5, setIntValue5] = useState(15); // number of informants
+  const [intValue5, setIntValue5] = useState(5); // number of informants
   const [floatValue1, setFloatValue1] = useState(0.9); // alpha
   const [floatValue2, setFloatValue2] = useState(0.8); // beta
   const [floatValue3, setFloatValue3] = useState(0.7); // gamma
@@ -61,12 +34,18 @@ export default function Regular() {
   const [stringValue1, setStringValue1] = useState("ReLU"); // activation function chosen
   const [stringValue2, setStringValue2] = useState("BinaryCrossEntropy"); // loss function chosen
 
-  const [fetchedData, setFetchedData] = useState(null); // data
-
   const [accuracy, setAccuracy] = useState(null);
   const [fitness, setFitness] = useState(null);
   const [loss, setLoss] = useState(null);
   const [time, setTime] = useState(null);
+
+  const [expanded, setExpanded] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  const toggleExpand = () => {
+    setExpanded(!expanded);
+  };
 
   const activationFuncs = [
     { name: "None", value: 1 },
@@ -140,6 +119,8 @@ export default function Regular() {
   };
 
   const sendDataToServer = () => {
+    setLoading(true);
+
     const data = {
       intValue1,
       intValue2,
@@ -177,10 +158,11 @@ export default function Regular() {
         console.log("Loss:", loss);
         console.log("Elapsed Time:", time);
 
-        setAccuracy(accuracy);
+        setAccuracy(Number(accuracy).toFixed(6));
         setFitness(fitness);
         setLoss(loss);
-        setTime(Number(time).toFixed(2));
+        setTime(Number(time).toFixed(6));
+        setLoading(false); // Hide loading when data is fetched
       })
       .catch((error) => {
         console.error("Error sending data:", error);
@@ -192,17 +174,22 @@ export default function Regular() {
     sendDataToServer()
       .then((dataFromServer) => {
         console.log("Data received:", dataFromServer);
-        setFetchedData(dataFromServer);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="container">
       <div className="cards__container">
         <div className="cards__wrapper">
+          <h1>Hyperparameter Tuning Dashboard</h1>
+          <p></p>
           <ul className="cards__items">
             <Slider
               src="images/img-1.jpg"
@@ -220,8 +207,6 @@ export default function Regular() {
               numValue={intValue2}
               handleNumChange={handleIntChange2}
             />
-          </ul>
-          <ul className="cards__items">
             <MultiSelect
               src="images/img-2.jpg"
               name="Activation Function for each Layer"
@@ -232,65 +217,8 @@ export default function Regular() {
               selectionText="Selected"
               numName={stringValue1}
             />
-            <MultiSelect
-              src="images/img-2.jpg"
-              name="Loss Function used"
-              min={1}
-              max={4}
-              numValue={intValue7}
-              handleNumChange={handleIntChange7}
-              selectionText="Selected"
-              numName={stringValue2}
-            />
           </ul>
           <ul className="cards__items">
-            <Slider
-              src="images/img-4.jpg"
-              name="Alpha Value"
-              min={0.1}
-              max={0.9}
-              numValue={floatValue1}
-              step={0.01}
-              handleNumChange={handleFloatChange1}
-            />
-            <Slider
-              src="images/img-5.jpg"
-              name="Beta Value"
-              min={0.1}
-              max={0.9}
-              numValue={floatValue2}
-              step={0.01}
-              handleNumChange={handleFloatChange2}
-            />
-            <Slider
-              src="images/img-6.jpg"
-              name="Gamma Value"
-              min={0.1}
-              max={0.9}
-              numValue={floatValue3}
-              step={0.01}
-              handleNumChange={handleFloatChange3}
-            />
-            <Slider
-              src="images/img-7.jpg"
-              name="Delta Value"
-              min={0.1}
-              max={0.9}
-              numValue={floatValue4}
-              step={0.01}
-              handleNumChange={handleFloatChange4}
-            />
-          </ul>
-          <ul className="cards__items">
-            <Slider
-              src="images/img-8.jpg"
-              name="Jump Size"
-              min={0.1}
-              max={0.9}
-              numValue={floatValue5}
-              step={0.01}
-              handleNumChange={handleFloatChange5}
-            />
             <Slider
               src="images/img-3.jpg"
               name="Swarm Size"
@@ -316,22 +244,113 @@ export default function Regular() {
               handleNumChange={handleIntChange4}
             />
           </ul>
+          <div>
+            <Button
+              className="btns"
+              buttonStyle="btn--primary"
+              buttonSize="btn--large"
+              onClick={toggleExpand}
+              linkTo="/regular"
+            >
+              {expanded ? "Hide Controls" : "Show More Controls"}{" "}
+              <FontAwesomeIcon icon={expanded ? faEyeSlash : faEye} />
+            </Button>
+            {expanded && (
+              <div>
+                <ul className="cards__items">
+                  <MultiSelect
+                    src="images/img-2.jpg"
+                    name="Loss Function used"
+                    min={1}
+                    max={4}
+                    numValue={intValue7}
+                    handleNumChange={handleIntChange7}
+                    selectionText="Selected"
+                    numName={stringValue2}
+                  />
+                  <Slider
+                    src="images/img-8.jpg"
+                    name="Jump Size"
+                    min={0.1}
+                    max={0.9}
+                    numValue={floatValue5}
+                    step={0.01}
+                    handleNumChange={handleFloatChange5}
+                  />
+                </ul>
+                <ul className="cards__items">
+                  <Slider
+                    src="images/img-4.jpg"
+                    name="Alpha Value"
+                    min={0.1}
+                    max={0.9}
+                    numValue={floatValue1}
+                    step={0.01}
+                    handleNumChange={handleFloatChange1}
+                  />
+                  <Slider
+                    src="images/img-5.jpg"
+                    name="Beta Value"
+                    min={0.1}
+                    max={0.9}
+                    numValue={floatValue2}
+                    step={0.01}
+                    handleNumChange={handleFloatChange2}
+                  />
+                  <Slider
+                    src="images/img-6.jpg"
+                    name="Gamma Value"
+                    min={0.1}
+                    max={0.9}
+                    numValue={floatValue3}
+                    step={0.01}
+                    handleNumChange={handleFloatChange3}
+                  />
+                  <Slider
+                    src="images/img-7.jpg"
+                    name="Delta Value"
+                    min={0.1}
+                    max={0.9}
+                    numValue={floatValue4}
+                    step={0.01}
+                    handleNumChange={handleFloatChange4}
+                  />
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      <>
-        <button onClick={handleClick}>Send Data</button>
-      </>
-      <div>
-        <h1>Frontend App</h1>
-        {fetchedData && <DataComponent data={fetchedData} />}
-      </div>
-      <div>
-        <ResultsDisplay
-          accuracy={accuracy}
-          fitness={fitness}
-          loss={loss}
-          time={time}
-        />
+      <div className="cards__container">
+        <div className="hero-btns">
+          <Button
+            className="btns"
+            buttonStyle="btn--primary"
+            buttonSize="btn--large"
+            onClick={handleClick}
+            linkTo="/regular"
+          >
+            Run Code <FontAwesomeIcon icon={faPlay} />
+          </Button>
+        </div>
+        <div>
+          {loading && (
+            <FontAwesomeIcon className="fa-spin fa-3x" icon={faCircleNotch} />
+          )}
+        </div>
+        <p></p>
+        <div>
+          {!loading && (
+            <ul className="cards__items">
+              <Results
+                accuracy={accuracy}
+                fitness={fitness}
+                loss={loss}
+                time={time}
+              />
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,141 @@
+.cards {
+  padding: 4rem;
+  background: #fff;
+}
+
+h1 {
+  text-align: center;
+}
+
+.cards__container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  max-width: 1120px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cards__wrapper {
+  position: relative;
+  margin: 50px 0 45px;
+}
+
+.cards__items {
+  margin-bottom: 24px;
+}
+
+.cards__item {
+  display: flex;
+  flex: 1;
+  margin: 0 1rem;
+  border-radius: 10px;
+}
+
+.cards__item__link {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.cards__item__info {
+  padding: 20px 30px 30px;
+}
+
+.cards__item__text {
+  color: #252e48;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .content__blog__container {
+    width: 84%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cards__items {
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .cards__item {
+    margin-bottom: 2rem;
+  }
+}
+
+.slider-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.slider-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"] {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.multi-select {
+  display: none; /* Initially hide the options */
+  /* Add card-like styles for the multi-select */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.multi-select.show-options {
+  display: block; /* Show the options when the show-options class is present */
+}
+
+.multi-select-label {
+  cursor: pointer;
+  /* Add label styling for the multi-select */
+  color: #252e48;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+
+.expandable-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.expandable-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  outline: none;
+}
+
+.expandable-content {
+  display: none;
+  padding: 10px;
+}
+
+.expandable-content p {
+  margin: 5px 0;
+}
+
+.expandable-content.show {
+  display: block;
+}

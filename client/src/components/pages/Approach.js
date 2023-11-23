@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../App.css";
 import "../HeroSection.css";
 import "../Cards.css";
@@ -8,11 +8,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Approach() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="hero-container">
         <video src="/videos/video-2.mp4" autoPlay loop muted />
-        <h1>To Infinity and Beyond!</h1>
+        <h1>To Infinity and Beyond</h1>
       </div>
       <div className="cards">
         <div className="cards__container">
@@ -36,9 +40,10 @@ export default function Approach() {
               wanted diamonds.
             </p>
             <p>
-              And the result is truly incredibly. A beautiful and responsive
-              interface that reacts to any screen size. Lively animations make
-              the entire interface come to life and make things simply gorgeous.
+              And the result is truly incredible. A beautiful and responsive
+              interface that reacts to any screen size. Lively animations
+              fashion the entire interface to come to life and absolutely
+              stunning to look at.
             </p>
           </div>
           <div>
