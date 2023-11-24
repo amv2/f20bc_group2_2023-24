@@ -22,7 +22,7 @@ def extract_int_float_data(int_dict, float_dict):
     max_iter = int_dict['intValue4']
     num_informants = int_dict['intValue5']
     list_func = int_dict['intValue6']
-    loss_func = int_dict['intValue7']
+    loss_func = 2
 
     accuracy, fitness, loss, time = regular_run(nb_layers=nb_layers,
                                                 nb_nodes=nb_nodes,

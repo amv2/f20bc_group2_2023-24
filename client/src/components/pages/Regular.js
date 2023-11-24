@@ -17,22 +17,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Regular() {
-  const [intValue1, setIntValue1] = useState(4); // number of layers
-  const [intValue2, setIntValue2] = useState(8); // number of nodes per layer
-  const [intValue3, setIntValue3] = useState(50); // swarm size
-  const [intValue4, setIntValue4] = useState(25); // max iterations
-  const [intValue5, setIntValue5] = useState(5); // number of informants
+  const [intValue1, setIntValue1] = useState(5); // number of layers
+  const [intValue2, setIntValue2] = useState(10); // number of nodes per layer
+  const [intValue3, setIntValue3] = useState(100); // swarm size
+  const [intValue4, setIntValue4] = useState(20); // max iterations
+  const [intValue5, setIntValue5] = useState(20); // number of informants
   const [floatValue1, setFloatValue1] = useState(0.9); // alpha
   const [floatValue2, setFloatValue2] = useState(0.8); // beta
   const [floatValue3, setFloatValue3] = useState(0.7); // gamma
   const [floatValue4, setFloatValue4] = useState(0.6); // delta
-  const [floatValue5, setFloatValue5] = useState(0.2); // jump size
+  const [floatValue5, setFloatValue5] = useState(0.1); // jump size
 
   const [intValue6, setIntValue6] = useState(2); // activation function
-  const [intValue7, setIntValue7] = useState(1); // loss function
 
   const [stringValue1, setStringValue1] = useState("ReLU"); // activation function chosen
-  const [stringValue2, setStringValue2] = useState("BinaryCrossEntropy"); // loss function chosen
 
   const [accuracy, setAccuracy] = useState(null);
   const [fitness, setFitness] = useState(null);
@@ -59,14 +57,6 @@ export default function Regular() {
     { name: "None", value: 9 },
   ];
 
-  const lossFuncs = [
-    { name: "None", value: 1 },
-    { name: "Mse", value: 2 },
-    { name: "BinaryCrossEntropy", value: 3 },
-    { name: "Hinge", value: 4 },
-    { name: "None", value: 5 },
-  ];
-
   const handleIntChange1 = (event) => {
     setIntValue1(parseInt(event.target.value, 10));
   };
@@ -90,12 +80,6 @@ export default function Regular() {
   const handleIntChange6 = (event) => {
     setIntValue6(parseInt(event.target.value, 10));
     setStringValue1(activationFuncs[intValue6].name.toString());
-  };
-
-  const handleIntChange7 = (event) => {
-    setIntValue7(parseInt(event.target.value, 10));
-    // console.log(activationFuncs[intValue7].name);
-    setStringValue2(lossFuncs[intValue7].name);
   };
 
   const handleFloatChange1 = (event) => {
@@ -128,7 +112,6 @@ export default function Regular() {
       intValue4,
       intValue5,
       intValue6,
-      intValue7,
       floatValue1,
       floatValue2,
       floatValue3,
@@ -222,8 +205,8 @@ export default function Regular() {
             <Slider
               src="images/img-3.jpg"
               name="Swarm Size"
-              min={10}
-              max={100}
+              min={50}
+              max={300}
               numValue={intValue3}
               handleNumChange={handleIntChange3}
             />
@@ -231,7 +214,7 @@ export default function Regular() {
               src="images/img-10.jpg"
               name="Number of Informants"
               min={1}
-              max={30}
+              max={100}
               numValue={intValue5}
               handleNumChange={handleIntChange5}
             />
@@ -244,6 +227,7 @@ export default function Regular() {
               handleNumChange={handleIntChange4}
             />
           </ul>
+          <p>Note: Higher value parameters will take longer to run</p>
           <div>
             <Button
               className="btns"
@@ -258,21 +242,11 @@ export default function Regular() {
             {expanded && (
               <div>
                 <ul className="cards__items">
-                  <MultiSelect
-                    src="images/img-2.jpg"
-                    name="Loss Function used"
-                    min={1}
-                    max={4}
-                    numValue={intValue7}
-                    handleNumChange={handleIntChange7}
-                    selectionText="Selected"
-                    numName={stringValue2}
-                  />
                   <Slider
                     src="images/img-8.jpg"
                     name="Jump Size"
                     min={0.1}
-                    max={0.9}
+                    max={1.5}
                     numValue={floatValue5}
                     step={0.01}
                     handleNumChange={handleFloatChange5}
@@ -283,7 +257,7 @@ export default function Regular() {
                     src="images/img-4.jpg"
                     name="Alpha Value"
                     min={0.1}
-                    max={0.9}
+                    max={1.5}
                     numValue={floatValue1}
                     step={0.01}
                     handleNumChange={handleFloatChange1}
@@ -292,7 +266,7 @@ export default function Regular() {
                     src="images/img-5.jpg"
                     name="Beta Value"
                     min={0.1}
-                    max={0.9}
+                    max={1.5}
                     numValue={floatValue2}
                     step={0.01}
                     handleNumChange={handleFloatChange2}
@@ -301,7 +275,7 @@ export default function Regular() {
                     src="images/img-6.jpg"
                     name="Gamma Value"
                     min={0.1}
-                    max={0.9}
+                    max={1.5}
                     numValue={floatValue3}
                     step={0.01}
                     handleNumChange={handleFloatChange3}
@@ -310,7 +284,7 @@ export default function Regular() {
                     src="images/img-7.jpg"
                     name="Delta Value"
                     min={0.1}
-                    max={0.9}
+                    max={1.5}
                     numValue={floatValue4}
                     step={0.01}
                     handleNumChange={handleFloatChange4}

@@ -13,14 +13,14 @@ IMPORTS
 
 # np.random.seed(300)
 
-import numpy as np
-import pandas as pd
-from BIC_CW.ANN.ANNBuilder import ANNBuilder
-from BIC_CW.PSO.PSOmethods import assess_fitness
-from BIC_CW.PSO.PSOvariants import pso_with_informants
-from BIC_CW.Activation.Activation import Sigmoid, Relu, Tanh, LeakyReLU, Swish, Softmax, GELU
-from BIC_CW.Loss.Loss import Mse, BinaryCrossEntropy, Hinge
 import time
+from BIC_CW.Loss.Loss import Mse, BinaryCrossEntropy, Hinge
+from BIC_CW.Activation.Activation import Sigmoid, Relu, Tanh, LeakyReLU, Swish, Softmax, GELU
+from BIC_CW.PSO.PSOvariants import pso_with_informants
+from BIC_CW.PSO.PSOmethods import assess_fitness
+from BIC_CW.ANN.ANNBuilder import ANNBuilder
+import pandas as pd
+import numpy as np
 input_features = 4
 
 
@@ -124,8 +124,8 @@ def regular_run(nb_layers,
 
     print("Best Solution:", best_solution.position)
     print("Accuracy:", accuracy)
-    print("Fitness:", fitness)
-    print("Loss:", loss)
+    # print("Fitness:", fitness)
+    # print("Loss:", loss)
 
     end_time = time.time()
 

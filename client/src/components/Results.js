@@ -13,7 +13,7 @@ function Results(props) {
                   <p>Accuracy: {props.accuracy} </p>
                 </div>
                 <div>
-                  <p>Elapsed Time: {props.time} s</p>
+                  <p>Elapsed Time (s): {props.time}</p>
                 </div>
               </div>
             </div>
