@@ -18,7 +18,9 @@ pip install Flask
 
 # Create the Flask server
 
-```
+```bash
+cd server/
+
 python -m venv venv
 
 or
