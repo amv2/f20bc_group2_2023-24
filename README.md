@@ -12,6 +12,20 @@ Ensure you have node installed
 
 https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
+Ensure you have Flask installed
+
+pip install Flask
+
+# Create the Flask server
+
+```
+python -m venv venv
+
+or
+
+python3 -m venv venv
+```
+
 # Install the dependencies in the client directory
 
 ```bash

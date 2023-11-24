@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/amv2/Codespace/Uni/f20bc_app_playground/server/venv"
+set -gx VIRTUAL_ENV "/home/amv2/Codespace/Uni/f20bc_group2_2023-24/server/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
