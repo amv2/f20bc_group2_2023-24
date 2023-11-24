@@ -8,7 +8,11 @@ pip install numpy
 pip install pandas
 ```
 
-Install the dependencies in the client directory
+Ensure you have node installed
+
+https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+# Install the dependencies in the client directory
 
 ```bash
 cd client/
@@ -17,6 +21,8 @@ npm install
 ```
 
 # How to Run
+
+![Alt text](image.png)
 
 ### Step 1
 
@@ -33,10 +39,10 @@ cd server/
 
 python server.py
 
-or
-
 python3 server.py
 ```
+
+![Alt text](image-1.png)
 
 ### Step 3: Load up the Frontend (Client-side)
 
@@ -56,6 +62,12 @@ or
 yarn start
 
 ```
+
+![Alt text](image-2.png)
+
+Test out some hyperparameters in the interface!
+
+![Alt text](image-3.png)
 
 # Code References:
 
