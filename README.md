@@ -33,6 +33,8 @@ cd server/
 
 python server.py
 
+or
+
 python3 server.py
 ```
 
