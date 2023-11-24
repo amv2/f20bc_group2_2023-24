@@ -1,3 +1,7 @@
+# Run the Code
+
+Note, to run the code, you will need to install a few dependencies
+
 # Install dependencies
 
 Ensure you have numpy and pandas installed
@@ -17,6 +21,8 @@ Ensure you have Flask installed
 pip install Flask
 
 # Create the Flask server
+
+create a flask server in the client directory
 
 ```bash
 cd server/
