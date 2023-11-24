@@ -1,3 +1,21 @@
+# Install dependencies
+
+Ensure you have numpy and pandas installed
+
+```bash
+pip install numpy
+
+pip install pandas
+```
+
+Install the dependencies in the client directory
+
+```bash
+cd client/
+
+npm install
+```
+
 # How to Run
 
 ### Step 1
@@ -10,6 +28,14 @@ In the terminal with the server directory open,
 
 type: "python server.py" or "python3 server.py" depending on your operating system
 
+```bash
+cd server/
+
+python server.py
+
+python3 server.py
+```
+
 ### Step 3: Load up the Frontend (Client-side)
 
 In the terminal with the client directory open,
@@ -17,6 +43,16 @@ In the terminal with the client directory open,
 type: "npm start" (or "yarn start" if you have yarn installed)
 
 The frontend will connect to the proxy specified in the package.json file (ie. it will connect to the server).
+
+```bash
+cd client/
+
+npm start
+
+or
+
+yarn start
+```
 
 # Code References:
 
