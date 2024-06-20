@@ -93,13 +93,15 @@ Test out some hyperparameters in the interface!
 
 # Supporting Images
 
+Main page
+
 ![Alt text](image-4.png)
 
-Text
+Main page
 
 ![Alt text](image-5.png)
 
-Text
+Sub page
 
 ![Alt text](image-6.png)
 
