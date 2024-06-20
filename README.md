@@ -91,6 +91,14 @@ Test out some hyperparameters in the interface!
 
 ![Alt text](image-3.png)
 
+# Supporting Images
+
+![Alt text](image-4.png)
+
+![Alt text](image-5.png)
+
+![Alt text](image-6.png)
+
 # Code References:
 
 ### Code references are included in the files specific to them as well as below
