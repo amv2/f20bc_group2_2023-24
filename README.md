@@ -95,7 +95,11 @@ Test out some hyperparameters in the interface!
 
 ![Alt text](image-4.png)
 
+Text
+
 ![Alt text](image-5.png)
+
+Text
 
 ![Alt text](image-6.png)
 
